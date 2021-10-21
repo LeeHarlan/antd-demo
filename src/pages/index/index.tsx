@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'antd';
 import ProTable from '@ant-design/pro-table';
 import type { RequestData } from '@ant-design/pro-table';
 import type { UserItemData } from './types';
-import styles from './index.less';
+import dynamicComponent from "@/utils/dynamicComponent";
+
+const HelloWorld = dynamicComponent( { loader: () => import('./components/HelloWorld'), loading: <div>Loading ...</div>});
 
 export default function IndexPage() {
   const [count, setCount] = useState(0);
@@ -84,10 +86,10 @@ export default function IndexPage() {
 
   return (
     <div>
-      <h1 className={styles.title}>Page index</h1>
       <Button type="primary" onClick={() => setCount((prev) => prev + 1)}>
         count: {count}
       </Button>
+      <HelloWorld />
       <ProTable {...tableProps} />
     </div>
   );

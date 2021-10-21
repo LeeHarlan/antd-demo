@@ -6,4 +6,7 @@ export default defineConfig({
     type: 'none',
   },
   fastRefresh: {},
+  theme: {
+    '@root-entry-name': 'default',
+  }
 });
